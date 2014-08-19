@@ -1,0 +1,16 @@
+{
+    "author": "Andrew Butcher",
+    "name": "node-pulp",
+    "description": "Pulp REST API interface for node.",
+    "version": "0.0.1",
+    "repository": {
+	"url": ""
+    },
+    "dependencies": {},
+    "devDependencies": {},
+    "optionalDependencies": {},
+    "main": "node-pulp.js",
+    "engines": {
+	"node": "*"
+    }
+}
