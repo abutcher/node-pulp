@@ -61,7 +61,6 @@ function pulpPOST(path, requestData, callback) {
 	res.setEncoding('utf8');
 	res.on('data', function(chunk) {
 	    data += chunk;
-	    console.log(chunk);
 	});
 	res.on('end', function() {
 	    callback(JSON.parse(data));
