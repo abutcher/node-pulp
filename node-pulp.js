@@ -91,6 +91,12 @@ exports.getRepos = function(callback) {
     });
 }
 
+exports.getRepo = function(repoId, callback) {
+    pulpGET('/pulp/api/v2/repositories/' + repoId + '/', function(data) {
+	callback(data);
+    });
+}
+
 exports.searchRepos = function(filters, callback) {
     var data = {
 	"criteria": {
