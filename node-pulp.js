@@ -91,6 +91,24 @@ exports.getRepos = function(callback) {
     });
 }
 
+exports.searchRepos = function(filters, callback) {
+    var data = {
+	"criteria": {
+	    "fields": [
+		"display_name",
+		"content_unit_counts"
+	    ],
+	    "filters": filters
+	}
+    }
+
+    var dataString = JSON.stringify(data);
+
+    pulpPOST('/pulp/api/v2/repositories/search/', dataString, function(data) {
+	callback(data);
+    });
+}
+
 exports.getRepoPackages = function(repoId, callback) {
     var data = {
 	"criteria": {
