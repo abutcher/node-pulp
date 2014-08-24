@@ -137,21 +137,16 @@ exports.getRepoPackages = function(repoId, callback) {
     });
 }
 
-exports.searchPackages = function(pkgNameGlob, callback) { 
+exports.searchPackages = function(filters, callback) {
     var data = {
 	"criteria": {
 	    "fields": [
 		"name",
 		"version"
 	    ],
-	    "filters": {
-		"name": {
-		    "\$regex": "\.\*" + pkgNameGlob + "\.\*"
-		}
-	    }
+	    "filters": filters
 	}
     }
-
 
     var dataString = JSON.stringify(data);
 
