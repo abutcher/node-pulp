@@ -76,7 +76,18 @@ function pulpPOST(path, requestData, callback) {
 }
 
 exports.getRepos = function(callback) {
-    pulpGET('/pulp/api/v2/repositories/', function(data) {
+    var data = {
+	"criteria": {
+	    "fields": [
+		"display_name",
+		"content_unit_counts"
+	    ],
+	}
+    }
+
+    var dataString = JSON.stringify(data);
+
+    pulpPOST('/pulp/api/v2/repositories/search/', dataString, function(data) {
 	callback(data);
     });
 }
