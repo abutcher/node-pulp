@@ -97,13 +97,10 @@ exports.getRepo = function(repoId, callback) {
     });
 }
 
-exports.searchRepos = function(filters, callback) {
+exports.searchRepos = function(fields, filters, callback) {
     var data = {
 	"criteria": {
-	    "fields": [
-		"display_name",
-		"content_unit_counts"
-	    ],
+	    "fields": fields,
 	    "filters": filters
 	}
     }
@@ -115,7 +112,7 @@ exports.searchRepos = function(filters, callback) {
     });
 }
 
-exports.getRepoPackages = function(repoId, callback) {
+exports.getRepoPackages = function(repoId, fields, callback) {
     var data = {
 	"criteria": {
 	    "fields": {
@@ -137,13 +134,10 @@ exports.getRepoPackages = function(repoId, callback) {
     });
 }
 
-exports.searchPackages = function(filters, callback) {
+exports.searchPackages = function(fields, filters, callback) {
     var data = {
 	"criteria": {
-	    "fields": [
-		"name",
-		"version"
-	    ],
+	    "fields": fields,
 	    "filters": filters
 	}
     }
