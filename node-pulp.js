@@ -115,12 +115,7 @@ exports.searchRepos = function(fields, filters, callback) {
 exports.getRepoPackages = function(repoId, fields, callback) {
     var data = {
 	"criteria": {
-	    "fields": {
-		"unit": [
-		    "name",
-		    "version"
-		]
-	    },
+	    "fields": fields,
 	    "type_ids": [
 		"rpm"
 	    ]
