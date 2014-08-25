@@ -97,12 +97,20 @@ exports.getRepo = function(repoId, callback) {
     });
 }
 
-exports.searchRepos = function(fields, filters, callback) {
+exports.searchRepos = function(fields, filters, limit, skip, callback) {
     var data = {
 	"criteria": {
 	    "fields": fields,
 	    "filters": filters
 	}
+    }
+
+    if ( limit !== undefined && limit ) {
+	data['criteria']['limit'] = limit;
+    }
+
+    if ( skip !== undefined && skip ) {
+	data['criteria']['skip'] = skip;
     }
 
     var dataString = JSON.stringify(data);
@@ -112,7 +120,7 @@ exports.searchRepos = function(fields, filters, callback) {
     });
 }
 
-exports.getRepoPackages = function(repoId, fields, callback) {
+exports.getRepoPackages = function(repoId, fields, limit, skip, callback) {
     var data = {
 	"criteria": {
 	    "fields": fields,
@@ -122,6 +130,14 @@ exports.getRepoPackages = function(repoId, fields, callback) {
 	}
     }
 
+    if ( limit !== undefined && limit ) {
+	data['criteria']['limit'] = limit;
+    }
+
+    if ( skip !== undefined && skip ) {
+	data['criteria']['skip'] = skip;
+    }
+
     var dataString = JSON.stringify(data);
 
     pulpPOST('/pulp/api/v2/repositories/' + repoId + '/search/units/', dataString, function(data) {
@@ -129,12 +145,20 @@ exports.getRepoPackages = function(repoId, fields, callback) {
     });
 }
 
-exports.searchPackages = function(fields, filters, callback) {
+exports.searchPackages = function(fields, filters, limit, skip, callback) {
     var data = {
 	"criteria": {
 	    "fields": fields,
 	    "filters": filters
 	}
+    }
+
+    if ( limit !== undefined && limit ) {
+	data['criteria']['limit'] = limit;
+    }
+
+    if ( skip !== undefined && skip ) {
+	data['criteria']['skip'] = skip;
     }
 
     var dataString = JSON.stringify(data);
